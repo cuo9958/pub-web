@@ -1,0 +1,11 @@
+#bundle_detail {
+    margin: 20px 30px;
+    border: solid 1px #ccc;
+    padding: 20px 10px;
+}
+#bundle_detail .slider {
+    width: 80%;
+}
+#bundle_detail .tags {
+    margin-right: 10px;
+}

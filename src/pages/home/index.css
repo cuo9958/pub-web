@@ -1,0 +1,19 @@
+#bundle_list {
+    margin: 20px 0;
+}
+
+#bundle_list .top_box {
+    padding: 20px 10px 0 10px;
+    background: #efefef;
+}
+
+#bundle_list .bundle_box {
+    margin: 10px 0;
+}
+#bundle_list .bundle_footer {
+    margin-top: 10px;
+    text-align: right;
+}
+#bundle_list .list_small {
+    font-size: 10px;
+}
