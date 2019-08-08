@@ -1,21 +1,47 @@
 import React from "react";
-import { Button, Input } from "element-react";
+import { inject } from "mobx-react";
+import { Button, Input, Notification } from "element-react";
 import { iRouter } from "../../ts/react";
 import "./index.css";
+import request from "../../services/request";
 
 interface iProps {
     history: iRouter;
+    login(data: any): void;
 }
+interface iState {
+    username: string;
+    pwd: string;
+}
+@inject((models: any) => ({
+    login: models.user.login
+}))
+export default class extends React.Component<iProps, iState> {
+    constructor(props: any) {
+        super(props);
+        this.state = {
+            username: "",
+            pwd: ""
+        };
+    }
 
-export default class extends React.Component<iProps> {
     render() {
         return (
             <div id="login">
                 <div className="box">
                     <div className="title">登&nbsp;&nbsp;&nbsp;录</div>
                     <div className="content">
-                        <Input placeholder="用户名" />
-                        <Input placeholder="密码" />
+                        <Input
+                            placeholder="用户名"
+                            onChange={(e: any) =>
+                                this.setState({ username: e })
+                            }
+                        />
+                        <Input
+                            placeholder="密码"
+                            type="password"
+                            onChange={(e: any) => this.setState({ pwd: e })}
+                        />
                         <Button
                             onClick={this.login}
                             className="login_btn"
@@ -30,7 +56,19 @@ export default class extends React.Component<iProps> {
         );
     }
 
-    login = () => {
-        this.props.history.push("/");
+    login = async () => {
+        try {
+            const data = await request.post("/user/login", {
+                username: this.state.username,
+                pwd: this.state.pwd
+            });
+            this.props.login(data);
+            this.props.history.push("/");
+        } catch (error) {
+            console.log(error);
+            Notification.error({
+                message: error.msg
+            });
+        }
     };
 }

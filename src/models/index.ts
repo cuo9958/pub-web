@@ -1,6 +1,8 @@
-import demo from './demo'
+import demo from "./demo";
+import user from "./user";
 
 const stores = {
-    demo
+    demo,
+    user
 };
 export default stores;

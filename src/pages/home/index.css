@@ -17,3 +17,13 @@
 #bundle_list .list_small {
     font-size: 10px;
 }
+
+#bundle_list .notUse {
+    color: #999;
+}
+#bundle_list .used {
+    color: rgb(0, 144, 24);
+}
+#bundle_list .delete {
+    color: #efefef;
+}

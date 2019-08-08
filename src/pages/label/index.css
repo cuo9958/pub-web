@@ -17,3 +17,7 @@
 #label_list .list_small {
     font-size: 10px;
 }
+#label_list .not_use {
+    background: #ccc;
+    color: #fff;
+}

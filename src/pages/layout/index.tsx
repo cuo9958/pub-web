@@ -10,10 +10,14 @@ interface iProps {
     demo_show: boolean;
     history: iRouter;
     location: any;
+    nickname: string;
+    isLogin(): boolean;
 }
 
 @inject((models: any) => ({
-    demo_show: models.demo.show
+    demo_show: models.demo.show,
+    isLogin: models.user.isLogin,
+    nickname: models.user.nickname
 }))
 @observer
 export default class extends React.Component<iProps> {
@@ -33,10 +37,11 @@ export default class extends React.Component<iProps> {
                         mode="horizontal"
                         onSelect={this.onSelect}
                     >
-                        <Menu.SubMenu index="me" title="管理员">
+                        <Menu.SubMenu index="me" title={this.props.nickname}>
                             <Menu.Item index="manger">用户管理</Menu.Item>
                             <Menu.Item index="quit">退出</Menu.Item>
                         </Menu.SubMenu>
+                        <Menu.Item index="/about">使用说明</Menu.Item>
                         <Menu.Item index="/label">标签管理</Menu.Item>
                         <Menu.Item index="/detail">新建发布</Menu.Item>
                         <Menu.Item index="/">发布列表</Menu.Item>
@@ -55,9 +60,14 @@ export default class extends React.Component<iProps> {
         if (key === "/") this.list();
         if (key === "/detail") this.editor();
         if (key === "/label") this.label();
+        if (key === "/about") this.goPage("/about");
         if (key === "/manger") this.manger();
         if (key === "quit") this.quit();
     };
+
+    goPage(pathname: string) {
+        this.props.history.push(pathname);
+    }
     /**
      * 查看列表
      */

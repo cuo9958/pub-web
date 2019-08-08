@@ -20,11 +20,13 @@ const encoded = (data: any) => {
     return data;
 };
 class RequestError extends Error {
-    constructor(name: string, status: number) {
+    constructor(name: string, status: number, msg: string) {
         super(name);
         this.status = status;
+        this.msg = msg;
     }
     status: number;
+    msg: string;
 }
 /**
  * 自定义请求库
@@ -42,6 +44,7 @@ class Request {
         return res;
     }
     async _request(url: string, opts: any) {
+        if (url.indexOf("http") !== 0) url = "/papi" + url;
         let res = await this._fetch(url, opts);
         this._checkStatus(res, url);
         let json = res.data;
@@ -65,31 +68,31 @@ class Request {
         return json;
     }
     _checkServerStatus(json: any) {
-        if (json.status == 4002) {
+        if (json.status === 4002) {
             console.log("跳转鉴权");
             throw new Error("需要登录才可以哦");
         }
-        if (json.status == 403 || json.status == 444) {
+        if (json.status === 403 || json.status === 444) {
             console.log("跳转鉴权");
         }
-        if (json.status == 510) {
+        if (json.status === 510) {
             console.log("服务器错误");
             throw new Error("响应失败，请稍后再试");
         }
-        if (json.status != 0) {
+        if (json.status !== 0) {
             console.log("返回状态报错", json.status);
-            throw new RequestError(json.errorMsg, json.status);
+            throw new RequestError(json.errorMsg, json.status, json.msg);
         }
     }
     getHeaders(ispost = false) {
         let headers: any = {};
-        if (ispost) {
-            headers["Content-Type"] = "application/x-www-form-urlencoded";
-        }
+        // if (ispost) {
+        //     headers["Content-Type"] = "application/x-www-form-urlencoded";
+        // }
         return headers;
     }
 
-    async get(url: string, data: any) {
+    async get(url: string, data: any = {}) {
         if (data) data = encoded(data);
         if (url.indexOf("?") < 0 && data) {
             url += "?" + data;
@@ -103,7 +106,7 @@ class Request {
         });
     }
 
-    async post(url: string, data: any) {
+    async post(url: string, data: any = {}) {
         return this._request(url, {
             method: "POST",
             credentials: "include",
