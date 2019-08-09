@@ -11,3 +11,8 @@ demo:[线上demo](http://bundle.guofangchao.com/#/)
 ![](http://resource.guofangchao.com/pub/pub-edit.png)
 ![](http://resource.guofangchao.com/pub/pub-data.png)
 ![](http://resource.guofangchao.com/pub/pub-login.png)
+
+### 其他系统地址
+
+1. https://github.com/cuo9958/pub-server
+2. https://github.com/cuo9958/pub-service
