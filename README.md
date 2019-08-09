@@ -4,7 +4,8 @@
 
 ### 界面预览
 
-![](http://resource.guofangchao.com/pub/pub-login.png)
+
 ![](http://resource.guofangchao.com/pub/pub-list.png)
 ![](http://resource.guofangchao.com/pub/pub-edit.png)
 ![](http://resource.guofangchao.com/pub/pub-data.png)
+![](http://resource.guofangchao.com/pub/pub-login.png)
