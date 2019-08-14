@@ -49,7 +49,7 @@ export default class extends React.Component<iProps, iState> {
                         >
                             登录
                         </Button>
-                        <div className="footer">解释权归前端所有</div>
+                        <div className="footer">解释权归前端团队所有</div>
                     </div>
                 </div>
             </div>

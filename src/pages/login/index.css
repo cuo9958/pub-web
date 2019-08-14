@@ -6,7 +6,8 @@
     height: 100%;
     background: #efefef;
     background-image: url("https://img9.daling.com/zin/public/appsub/2019/08/05/21/33/13/AIMN6X5000000294468.JPEG");
-    background-size: 100% 100%;
+    background-size: cover;
+    background-position: center;
 }
 
 #login .box {
