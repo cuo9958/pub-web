@@ -37,44 +37,7 @@ export default class extends React.Component<iProps, iState> {
             },
             count: 0,
             columns: this.columns,
-            list: [
-                {
-                    version: "1.2.4",
-                    platform: "android",
-                    sign: "sahs6j2828749sd6555599",
-                    date: "2016-05-02 12:02:33",
-                    name: "郭方超",
-                    process: 1,
-                    state: 0
-                },
-                {
-                    version: "1.2.3",
-                    platform: "ios",
-                    sign: "sahs6j2828749sd6555599",
-                    date: "2016-05-02",
-                    process: 10,
-                    name: "郭方超",
-                    state: 1
-                },
-                {
-                    version: "1.2.2",
-                    platform: "android",
-                    sign: "sahs6j2828749sd6555599",
-                    date: "2016-05-02",
-                    process: 35,
-                    name: "郭方超",
-                    state: 1
-                },
-                {
-                    version: "1.2.1",
-                    platform: "android",
-                    sign: "sahs6j2828749sd6555599",
-                    date: "2016-05-02",
-                    name: "郭方超",
-                    process: 100,
-                    state: 2
-                }
-            ]
+            list: []
         };
     }
 
